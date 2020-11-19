@@ -1,5 +1,6 @@
 FROM alpine
 
-COPY main /app/
+WORKDIR /app
+COPY main .
 
 CMD ./main
