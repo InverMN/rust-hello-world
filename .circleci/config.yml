@@ -7,3 +7,8 @@ jobs:
     steps:
     - checkout
     - run: rustc ./main.rs
+  run:
+    docker:
+    - image: circleci/rust
+    steps:
+    - run: ./main
