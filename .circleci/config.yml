@@ -19,10 +19,12 @@ jobs:
     steps:
     - checkout
     - run: rustc ./main.rs
+    - run: ls
   run:
     executor: docker
     steps:
     - run: echo "Running built image"
+    - run: ls
     - run: ./main
 
 workflows:
