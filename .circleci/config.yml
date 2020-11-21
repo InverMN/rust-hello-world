@@ -14,7 +14,7 @@ jobs:
     steps:
     - run: echo "Welcome! Building will start in few seconds" 
   build:
-    executor: docker-executor
+    executor: docker-rust
     resource_class: small
     steps:
     - checkout
