@@ -24,3 +24,12 @@ jobs:
     steps:
     - run: echo "Running built image"
     - run: ./main
+
+workflows:
+  regular-build:
+    jobs:
+    - welcome
+    - build
+    - run:
+        requires:
+          - build
