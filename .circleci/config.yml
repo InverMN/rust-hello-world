@@ -3,10 +3,10 @@ version: 2.1
 executors:
   docker:
     docker:
-    - image: cimg/base
+    - image: cimg/base:2020.11
   docker-rust:
     docker:
-    - image: cimg/rust
+    - image: cimg/rust:1.48.0
 
 jobs:
   welcome:
