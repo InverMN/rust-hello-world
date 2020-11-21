@@ -1,5 +1,13 @@
 version: 2.1
 
+executors:
+  docker:
+    docker:
+    - image: cimg/base
+  docker-rust:
+    docker:
+    - image: cimg/rust
+
 jobs:
   build:
     docker:
