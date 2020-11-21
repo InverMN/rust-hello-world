@@ -10,7 +10,7 @@ executors:
 
 jobs:
   welcome:
-    executor: docker-executor
+    executor: docker
     steps:
     - run: echo "Welcome! Building will start in few seconds" 
   build:
