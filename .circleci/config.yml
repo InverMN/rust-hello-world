@@ -9,10 +9,18 @@ executors:
     - image: cimg/rust
 
 jobs:
+  welcome:
+    executor: docker-executor
+    steps:
+    - run: echo "Welcome! Building will start in few seconds" 
   build:
-    docker:
-    - image: circleci/rust
+    executor: docker-executor
+    resource_class: small
     steps:
     - checkout
     - run: rustc ./main.rs
+  run:
+    executor: docker
+    steps:
+    - run: echo "Running built image"
     - run: ./main
