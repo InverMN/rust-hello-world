@@ -20,9 +20,15 @@ jobs:
     - checkout
     - run: rustc ./main.rs
     - run: ls
+    - persist_to_workspace:
+        root: workspace
+        paths:
+          - main
   run:
     executor: docker
     steps:
+    - attach_workspace:
+        at: /tmp/workspace
     - run: echo "Running built image"
     - run: ls
     - run: ./main
