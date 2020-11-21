@@ -22,14 +22,14 @@ jobs:
     - run: rustc ./main.rs
     - run: ls
     - persist_to_workspace:
-        root: workspace
+        root: /home/circleci/project
         paths:
           - main
   run:
     executor: docker
     steps:
     - attach_workspace:
-        at: /tmp/workspace
+        at: /home/circleci/project
     - run: echo "Running built image"
     - run: ls
     - run: ./main
