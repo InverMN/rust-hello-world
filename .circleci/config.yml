@@ -17,6 +17,7 @@ jobs:
     executor: docker-rust
     resource_class: small
     steps:
+    - run: pwd
     - checkout
     - run: rustc ./main.rs
     - run: ls
