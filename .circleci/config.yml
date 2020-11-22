@@ -25,7 +25,8 @@ jobs:
         root: /home/circleci/project
         paths:
           - main
-  run:
+          - Dockerfile
+  test:
     executor: docker
     steps:
     - attach_workspace:
@@ -33,12 +34,27 @@ jobs:
     - run: echo "Running built image"
     - run: ls
     - run: ./main
+  publish:
+    executor: docker
+    steps:
+    - attach_workspace:
+        at: /home/circleci/project
+    - setup_remote_docker:
+        docker_layer_caching: false
+        version: 19.03.13
+    - run: |
+        docker build -t $REPO:$TAG .
+        echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+        docker push $REPO:$TAG
 
 workflows:
   regular-build:
     jobs:
     - welcome
     - build
-    - run:
+    - test:
         requires:
           - build
+    - publish:
+        requires:
+        - test
