@@ -9,10 +9,6 @@ executors:
     - image: cimg/rust:1.48.0
 
 jobs:
-  welcome:
-    executor: docker
-    steps:
-    - run: echo "Welcome! Building will start in few seconds" 
   build:
     executor: docker-rust
     resource_class: small
@@ -52,7 +48,6 @@ jobs:
 workflows:
   regular-build:
     jobs:
-    - welcome
     - build
     - test:
         requires:
