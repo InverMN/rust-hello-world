@@ -24,6 +24,7 @@ jobs:
           - Dockerfile
   test:
     executor: docker
+    resource_class: small
     steps:
     - attach_workspace:
         at: /home/circleci/project
@@ -32,6 +33,7 @@ jobs:
     - run: ./main
   publish:
     executor: docker
+    resource_class: small
     steps:
     - attach_workspace:
         at: /home/circleci/project
